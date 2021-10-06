@@ -1,0 +1,24 @@
+Log file created at: 2021/10/07 00:59:29
+Running on machine: pop-os
+Binary: Built with gc go1.17.1 for linux/amd64
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1007 00:59:29.606751  320310 out.go:298] Setting OutFile to fd 1 ...
+I1007 00:59:29.606812  320310 out.go:350] isatty.IsTerminal(1) = true
+I1007 00:59:29.606815  320310 out.go:311] Setting ErrFile to fd 2...
+I1007 00:59:29.606819  320310 out.go:350] isatty.IsTerminal(2) = true
+I1007 00:59:29.606884  320310 root.go:313] Updating PATH: .minikube/bin
+W1007 00:59:29.606948  320310 root.go:291] Error reading config file at .minikube/config/config.json: open .minikube/config/config.json: no such file or directory
+I1007 00:59:29.607013  320310 out.go:305] Setting JSON to false
+I1007 00:59:29.632464  320310 start.go:111] hostinfo: {"hostname":"pop-os","uptime":56394,"bootTime":1633504775,"procs":431,"os":"linux","platform":"debian","platformFamily":"debian","platformVersion":"bullseye/sid","kernelVersion":"5.13.0-7614-generic","kernelArch":"x86_64","virtualizationSystem":"kvm","virtualizationRole":"host","hostId":"73ae6019-e2ac-047d-a87c-c8c2615c7b18"}
+I1007 00:59:29.632525  320310 start.go:121] virtualization: kvm host
+I1007 00:59:29.798980  320310 out.go:177] 😄  minikube v1.23.2 on Debian bullseye/sid
+I1007 00:59:29.799166  320310 notify.go:169] Checking for updates...
+I1007 00:59:29.799215  320310 driver.go:343] Setting default libvirt URI to qemu:///system
+I1007 00:59:29.868627  320310 out.go:177] ✨  Using the docker driver based on user configuration
+I1007 00:59:29.868662  320310 start.go:278] selected driver: docker
+I1007 00:59:29.868667  320310 start.go:751] validating driver "docker" against <nil>
+I1007 00:59:29.868683  320310 start.go:762] status for docker: {Installed:false Healthy:false Running:false NeedsImprovement:false Error:exec: "docker": executable file not found in $PATH Reason: Fix:Install Docker Doc:https://minikube.sigs.k8s.io/docs/drivers/docker/}
+I1007 00:59:29.903395  320310 out.go:177] 
+W1007 00:59:29.903528  320310 out.go:242] 🤷  Exiting due to PROVIDER_DOCKER_NOT_FOUND: The 'docker' provider was not found: exec: "docker": executable file not found in $PATH
+W1007 00:59:29.903654  320310 out.go:242] 💡  Suggestion: Install Docker
+W1007 00:59:29.903719  320310 out.go:242] 📘  Documentation: https://minikube.sigs.k8s.io/docs/drivers/docker/

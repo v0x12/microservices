@@ -7,9 +7,11 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
   protected subject: Subjects.TICKET_UPDATED = Subjects.TICKET_UPDATED;
   protected queueGroupName: string = queueGroupName;
   async onMessage(data: TicketUpdatedEvent['data'], msg: Message): Promise<void> {
-    const {id, title, price} = data
+    const {id, title, price, version} = data
     
-    const ticket = await Ticket.findById(id)
+    const ticket = await Ticket.findOne({
+      _id: id, version: version - 1
+    })
 
     if (!ticket) throw new NotFoundError("Ticket not found")
 
@@ -21,3 +23,22 @@ export class TicketUpdatedListener extends Listener<TicketUpdatedEvent> {
     msg.ack()
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
