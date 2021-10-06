@@ -10,9 +10,10 @@ export class TicketCreatedListener extends Listener<TicketCreatedEvent> {
     data: TicketCreatedEvent["data"],
     msg: Message
   ): Promise<void> {
-    const { title, price } = data;
+    const { id, title, price } = data;
 
     const ticket = Ticket.build({
+      id,
       title,
       price,
     });
