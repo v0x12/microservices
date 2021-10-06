@@ -1,8 +1,9 @@
-apiVersion: skaffold/v2beta22
+apiVersion: skaffold/v2alpha3
 kind: Config
 metadata:
   name: skaffold
 deploy:
+  kubeContext: minikube
   kubectl:
     manifests:
       - "./infra/k8s/*"
