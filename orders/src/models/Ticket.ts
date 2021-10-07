@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { Order, OrderStatus } from "./Order";
 import {updateIfCurrentPlugin} from 'mongoose-update-if-current'
+import { TicketCreatedEvent } from "@v0x-shared/common";
 
 interface TicketAttrs {
   id: string;
@@ -17,6 +18,7 @@ export interface TicketDoc extends mongoose.Document {
 
 interface TicketModel extends mongoose.Model<TicketDoc> {
   build(attrs: TicketAttrs): TicketDoc;
+  findByEvent(data: {id: string, version: number}): Promise<TicketDoc | null>
 }
 
 const ticketSchema = new mongoose.Schema(
@@ -46,10 +48,15 @@ ticketSchema.plugin(updateIfCurrentPlugin)
 ticketSchema.statics.build = (attrs: TicketAttrs) => {
   return new Ticket({
     _id: attrs.id,
-    title: attrs.title,
+    title: attrs.title, 
     price: attrs.price
   });
 };
+
+ticketSchema.statics.findByEvent = async (data: {id: string, version: number}): Promise<TicketDoc | null> => {
+  const {id, version} = data
+  return await Ticket.findOne({_id: id, version: version - 1})
+}
 
 ticketSchema.methods.isReserved = async function (): Promise<boolean> {
   const existingOrder = await Order.findOne({

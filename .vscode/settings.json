@@ -2,6 +2,7 @@
   "git.ignoreLimitWarning": true,
   "editor.fontFamily": "Fira Code Retina",
   "editor.fontSize": 16,
+  "editor.fontLigatures": true,
   "editor.tabSize": 2,
   "editor.lineHeight": 1.4,
 }
