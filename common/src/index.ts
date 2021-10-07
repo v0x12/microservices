@@ -17,7 +17,7 @@ export * from "./events/base-listener";
 
 // export abstract publisher
 export * from "./events/base-publisher";
-
+console.log('update')
 // export event types
 export * from "./events/eventTypes/ticket-created-event";
 export * from "./events/eventTypes/ticket-updated-event";
