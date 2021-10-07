@@ -1,6 +1,6 @@
 {
   "name": "@v0x-shared/common",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "",
   "files": [
     "build/**/*"
