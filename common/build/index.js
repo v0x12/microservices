@@ -26,6 +26,7 @@ __exportStar(require("./middlewares/validate-request"), exports);
 __exportStar(require("./events/base-listener"), exports);
 // export abstract publisher
 __exportStar(require("./events/base-publisher"), exports);
+console.log('update');
 // export event types
 __exportStar(require("./events/eventTypes/ticket-created-event"), exports);
 __exportStar(require("./events/eventTypes/ticket-updated-event"), exports);
