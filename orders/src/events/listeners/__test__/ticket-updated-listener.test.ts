@@ -32,7 +32,7 @@ const setup = async () => {
   return {data, msg, listener, ticket}
 }
 
-it("Event is successfully updating an ticket", async () => {
+it("Passing when event is successfully updating the ticket", async () => {
   const {data, msg, listener, ticket} = await setup()
  
   await listener.onMessage(data, msg);
@@ -43,7 +43,7 @@ it("Event is successfully updating an ticket", async () => {
   expect(updatedTicket?.title).toEqual("Updated title")
 })
 
-it("If event processed check version number is updated for the ticket", async () => {
+it("Passing when event processed, and incrementing the version number", async () => {
   const {data, msg, listener, ticket} = await setup()
  
   await listener.onMessage(data, msg);
@@ -64,7 +64,7 @@ it("Return error on version conflict", async () => {
   expect(updatedTicket?.version).toEqual(1)
 
   // Return error on version conflict
-  await listener.onMessage(data, msg).catch(err => null)
+  await listener.onMessage(data, msg).catch(err => console.log(err))
 })
 
 it("Acks the message on sucessfuly processed event", async () => {

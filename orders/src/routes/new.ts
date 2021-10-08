@@ -32,7 +32,7 @@ router.post(
     const { ticketId } = req.body;
     // 1. Get the ticket the user is trying to order in the database
     const ticket = await Ticket.findOne({ _id: ticketId });
-    // 2. Check if ticket is reserved or not.
+    // 2. Check if ticket is exists.
     if (!ticket) throw new NotFoundError("Ticket is not found!");
     // 3. Make sure the ticket is not reserved yet.
     const isReserved = await ticket.isReserved();
@@ -63,6 +63,7 @@ router.post(
         id: ticket.id,
         price: ticket.price,
       },
+      version: order.version
     });
     // 7. Send a response about the order
     res.status(201).send(order);

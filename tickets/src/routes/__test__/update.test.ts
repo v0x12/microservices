@@ -2,6 +2,7 @@ import { natsWrapper } from "../../nats-wrapper";
 import request from "supertest";
 import { app } from "../../app";
 import mongoose from "mongoose";
+import { Ticket } from "../../models/Ticket";
 
 const createTicket = (cookie?: string[], title?: string, price?: number) => {
   return request(app)
@@ -77,3 +78,20 @@ it("200 and sucessfully update an ticket", async () => {
   expect(updateResponse.body.title).not.toEqual(title);
   expect(updateResponse.body.price).not.toEqual(price);
 });
+
+it("Rejects an update if the ticket is reserved.", async () => {
+  const { cookie } = await global.signin();
+  const response = await createTicket(cookie, "Valid title", 99).expect(201);
+  const { id, title, price } = response.body;
+
+  const ticket = await Ticket.findById(id)
+
+  ticket!.orderId = new mongoose.Types.ObjectId().toString()
+  await ticket!.save()
+
+  const updateResponse = await request(app)
+    .put(`/api/tickets/${id}`)
+    .set("Cookie", cookie)
+    .send({ title: "New Valid title", price: 12 })
+    .expect(400);
+})

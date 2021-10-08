@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { TicketDoc } from "./Ticket";
 import { OrderStatus } from "@v0x-shared/common";
+import { updateIfCurrentPlugin } from "mongoose-update-if-current";
 
 export { OrderStatus };
 
@@ -52,6 +53,9 @@ const orderSchema = new mongoose.Schema<OrderDoc>(
     },
   }
 );
+
+orderSchema.set('versionKey', 'version')
+orderSchema.plugin(updateIfCurrentPlugin)
 
 orderSchema.statics.build = (attrs: OrderAttrs) => {
   return new Order(attrs);

@@ -6,6 +6,7 @@ import {
   NotAuthorizedError,
   requireAuth,
   validateRequest,
+  BadRequestError,
 } from "@v0x-shared/common";
 
 import { Ticket } from "../models/Ticket";
@@ -36,6 +37,7 @@ router.put(
     const ticket = await Ticket.findOne({ _id: ticketId });
 
     if (!ticket) throw new NotFoundError("Ticket is not found.");
+    if(ticket.orderId) throw new BadRequestError("Ticket is already reserved!")
 
     const notOwnThisTicket = req.currentUser?.id === ticket?.userId;
     if (!notOwnThisTicket)
