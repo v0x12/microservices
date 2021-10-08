@@ -1,9 +1,8 @@
 {
   "git.ignoreLimitWarning": true,
-  "editor.fontFamily": "Office code pro d",
-  "editor.fontWeight": "450",
-  "editor.fontSize": 15,
-  "editor.fontLigatures": true,
+  "editor.fontFamily": "fira code medium",
+  "editor.fontSize": 14.5,
+  "editor.fontLigatures": false,
   "editor.tabSize": 2,
-  "editor.lineHeight": 1.4,
+  "editor.lineHeight": 1.45,
 }
