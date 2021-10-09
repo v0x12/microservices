@@ -32,6 +32,7 @@ __exportStar(require("./events/eventTypes/ticket-created-event"), exports);
 __exportStar(require("./events/eventTypes/ticket-updated-event"), exports);
 __exportStar(require("./events/eventTypes/order-created-event"), exports);
 __exportStar(require("./events/eventTypes/order-cancelled-event"), exports);
+__exportStar(require("./events/eventTypes/expiration-complete-event"), exports);
 // export event types subjects
 __exportStar(require("./events/subjects"), exports);
 // export orders status
